@@ -60,6 +60,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'hondadevas'
-          slot-name: 'staging'
+          slot-name: 'hondadevasstaging'
           package: .
           
