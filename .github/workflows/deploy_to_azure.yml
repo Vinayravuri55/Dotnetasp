@@ -35,7 +35,7 @@ jobs:
           name: .net-app
           path: .\myapp
 
-  deploy:
+  deploy-staging:
     runs-on: windows-latest
     needs: build
     environment:
@@ -60,6 +60,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'hondadevas'
-          slot-name: 'production'
+          slot-name: 'staging'
           package: .
           
