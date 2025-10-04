@@ -66,6 +66,7 @@ jobs:
   swapslot:
     needs: deploy-staging
     runs-on: ubuntu-latest
+    environment: production
     steps:
       # 1. Azure Login again
       - name: Azure Login
@@ -75,10 +76,11 @@ jobs:
 
       # 2. Swap staging → production using action
       - name: Swap Slots
-        uses: azure/appservice-swap@v1
-        with:
-          app-name: 'hondadevas'
-          resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          slot-name: 'hondadevasstaging'
-          target-slot: production
+        id: swap
+        run: |
+          az webapp deployment slot swap \
+            --resource-group ${{ secrets.AZURE_RESOURCEGROUP_ID }} \
+            --name hondadevas \
+            --slot staging \
+            --target-slot production
           
