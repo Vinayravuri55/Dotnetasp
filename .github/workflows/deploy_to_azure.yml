@@ -84,6 +84,7 @@ jobs:
             --slot hondadevasstaging \
             --target-slot production
   rollback:
+    needs: swapslot
     runs-on: ubuntu-latest
     environment: production
     steps:
