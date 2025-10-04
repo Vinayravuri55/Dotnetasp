@@ -99,7 +99,7 @@ jobs:
           az webapp deployment slot swap \
             --resource-group ${{ secrets.AZURE_RESOURCEGROUP_ID }} \
             --name hondadevas \
-            --slot production \
-            --target-slot staging
+            --slot hondadevasstaging \
+            --target-slot production
   
           
