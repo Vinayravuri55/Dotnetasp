@@ -59,8 +59,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'hondadevas'
-          slot-name: 'hondadevasstaging'
+          app-name: 'hondaprodas'
+          slot-name: 'hondaprodasstaging'
           package: .
 
   swapslot:
@@ -80,8 +80,8 @@ jobs:
         run: |
           az webapp deployment slot swap \
             --resource-group ${{ secrets.AZURE_RESOURCEGROUP_ID }} \
-            --name hondadevas \
-            --slot hondadevasstaging \
+            --name hondaprodas \
+            --slot hondaprodasstaging \
             --target-slot production
   rollback:
     needs: swapslot
@@ -99,8 +99,8 @@ jobs:
         run: |
           az webapp deployment slot swap \
             --resource-group ${{ secrets.AZURE_RESOURCEGROUP_ID }} \
-            --name hondadevas \
-            --slot hondadevasstaging \
+            --name hondaprodas \
+            --slot hondaprodasstaging \
             --target-slot production
   
           
